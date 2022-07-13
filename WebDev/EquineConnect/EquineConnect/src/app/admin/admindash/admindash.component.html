@@ -1,0 +1,103 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Admin Dashboard</h1>
+      <p class="lead">Welcome to the Admin Dashboard!</p>
+    </div>
+</div>
+<!-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" *ngIf="adminmessage=='Product successfully created!'">
+  <div class="toast-header">
+    <img src="..." class="rounded mr-2" alt="...">
+    <strong class="mr-auto">Succcess!</strong>
+    <small>Just now</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    New Product successfully created!
+  </div>
+</div> -->
+  
+  <!-- <div class="alert alert-success" role="alert">
+    {{adminmessage}}
+  </div> -->
+  
+<nav class="mt-5">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-link active" id="nav-home-tab" data-toggle="tab" (click)="viewMode='listing'" role="tab" aria-controls="nav-home" aria-selected="true">Listing Dashboard</a>
+      <a class="nav-link" id="nav-profile-tab" data-toggle="tab" (click)="viewMode='adminact'" role="tab" aria-controls="nav-profile" aria-selected="false">Admin Account</a>
+      <a class="nav-link" id="nav-contact-tab" data-toggle="tab" (click)="viewMode='users'" role="tab" aria-controls="nav-contact" aria-selected="false">Registered Users</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent" [ngSwitch]="viewMode">
+  <div class="tab-pane fade show active mt-5" *ngSwitchCase="'listing'" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    You can view, modify and delete listing information below.<br>
+    To create a new listing, click <a href="/addlist">here.</a>
+  <div class="container mt-5">
+  <div class="card mt-2" *ngFor="let l of listings">
+    <img src={{l.image}} class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text"><b>{{l.id}} - {{l.title}}</b></p>
+      <p class="card-text"><b>Type:</b> {{l.type}}</p>
+      <p class="card-text"><b>Description:</b> {{l.description}}</p>
+  </div>
+  <div class="card-footer">
+    <p class="card-text">
+      <small class="text-muted"><b>Primary Contact: </b>{{l.primcont}}</small><br>
+      <small class="text-muted"><b>Primary Phone: </b>{{l.phone}}</small><br>
+      <small class="text-muted"><b>Primary Email: </b>{{l.email}}</small><br>
+      <small class="text-muted"><b>Location: </b>{{l.city}}, {{l.state}}</small><br>
+      <small><b>Listing Status: </b>{{l.verified}}</small><br>
+      <!-- <a (click)="onVerify(l)">Verify Listing</a> -->
+      <a (click)="onEdit(l)" class="badge badge-warning mr-2">Edit</a>
+      <a (click)="onDelete(l.id)" class="badge badge-danger">Delete</a>  
+    </p>
+  </div>
+</div>
+    </div>
+    </div>
+
+
+
+<!-- NEED TO UPDATE THIS AFTER FILTERING USER ARRAY BY USER TYPE -->
+<div class="mt-5" *ngSwitchCase="'adminact'" id="nav-profile"  role="tabpanel" aria-labelledby="nav-profile-tab">
+  You can view, modify and delete admin info below.
+    <!-- <div class="container mt-5">
+        <div class="card-deck" *ngIf="admins.length>0">
+            <div class="card" *ngFor="let admin of admins">
+            <div class="card-body">
+                <h5 class="card-title">{{admin.adminID}} - {{admin.adminUN}} </h5>
+            </div>
+            <div class="card-footer">
+                <p class="card-text">
+                <a (click)="onEditAdmin(admin)" class="badge badge-warning mr-2">Edit Admin</a>
+                <a (click)="onDeleteAdmin(admin.adminID)" class="badge badge-danger">Delete Admin</a>
+                </p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+</div>
+<div class="mt-5" id="nav-contact" *ngSwitchCase="'users'" role="tabpanel" aria-labelledby="nav-contact-tab">
+  You can view, modify and delete existing user info below.
+    <!-- <div class="container mt-5">
+      <div class="card-deck" *ngIf="users.length>0">
+        <div class="card" *ngFor="let user of users">
+          <div class="card-body">
+            <h5 class="card-title">{{user.id}} - {{user.firstName}} {{user.lastName}}</h5>
+            <p class="card-text">Email: {{user.email}}</p>
+            <p class="card-text">User Type: {{user.type}}</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text">
+                <a (click)="onEditUser(user)" class="badge badge-warning mr-2">Edit User</a>
+                <a (click)="onDeleteUser(user.id)" class="badge badge-danger">Delete User</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+     </div>     
+ 

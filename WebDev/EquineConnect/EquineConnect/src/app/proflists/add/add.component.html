@@ -1,0 +1,462 @@
+<!-- Bootstrap Form with validation -->
+<!-- <link href=”https://fonts.googleapis.com/icon?family=Material+Icons” rel=”stylesheet”> -->
+
+<div class="container form-container mt-3">
+  <h1>Add Listing Form</h1>
+  <p>Once the form is submitted, it may take between 24 to 48 hours for the listing to be verified and published on the site.<br>
+  Thank you for your patience!</p>
+  <form  #addlistForm="ngForm" class="form-validate"  >
+<div class="form-row">
+  <div class="col-md-6 mt-2">
+    <label for="email"><b>Primary Contact Email Address</b></label>
+        <input type="email" class="form-control" name="email" id="email" #email="ngModel" [(ngModel)]="listing.email" 
+        aria-describedby="emailHelp" minlength="6" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  >
+        <small *ngIf="hasError(email)" [class]="hasError(email) ? 'has-error' :''">
+        <div *ngIf="email?.errors">
+            <span *ngIf="email?.errors?.['required']">Email is a required field</span>
+            <span *ngIf="email?.errors?.['minlength']">Email is a min 6 char long field</span>
+            <!-- <span *ngIf="email?.errors?.['maxlength']">Email is a max 20 char long field</span> -->
+            <span *ngIf="email?.errors?.['pattern']">Please enter a valid email address</span>
+        </div>
+        </small>
+  </div>
+  <div class="col-md-6 mt-2">
+    <label for="title"><b>Title of Listing</b></label>
+        <input type="text" class="form-control" name="title" id="title" #title="ngModel" [(ngModel)]="listing.title" required
+        aria-describedby="titleHelp" minlength="5">
+        <small *ngIf="hasError(title)" [class]="hasError(title) ? 'has-error' :''">
+        <div *ngIf="title?.errors">
+            <span *ngIf="title?.errors?.['required']">Title is a required field</span>
+            <span *ngIf="title?.errors?.['minlength']">Title must be at least 5 characters</span>
+        </div>
+        </small>
+  </div>
+  </div>
+  <div class="form-row">
+    <div class="col-12 mt-2">
+      <label for="description"><b>Detailed Description</b></label>
+      <textarea class="form-control" aria-label="With textarea" name="description" id="description" #description="ngModel" [(ngModel)]="listing.description" required></textarea>
+      <small *ngIf="hasError(description)" [class]="hasError(description) ? 'has-error' :''">
+      <div *ngIf="description?.errors">
+          <span *ngIf="description?.errors?.['required']">Description is a required field</span>
+      </div>
+      </small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-12 mt-2">
+      <label for="primcont"><b>Primary Contact Name</b></label>
+      <input type="text" class="form-control" name="primcont" id="primcont" #primcont="ngModel" [(ngModel)]="listing.primcont" required
+      aria-describedby="primcontHelp">
+      <small *ngIf="hasError(primcont)" [class]="hasError(primcont) ? 'has-error' :''">
+      <div *ngIf="primcont?.errors">
+          <span *ngIf="primcont?.errors?.['required']">Primary Contact Name is a required field</span>
+      </div>
+      </small>
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="col-md-6 mt-2">
+    <label for="type"><b>Type of Service</b> <i>(select all that apply)</i></label>
+        <select class="form-select" multiple aria-label="multiple select example" class="form-control" name="type" id="type" #type="ngModel" [(ngModel)]="listing.type" required>
+        <option selected>Select Type of Service</option>
+        <option value="Boarding">Boarding</option>
+        <option value="Lessons">Lessons</option>
+        <option value="Sales">Leasing and Sales</option>
+        <option value="Breeding">Breeding</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Rehabilitation">Rehabilitation</option>
+        <option value="Farrier">Farrier</option>
+        <option value="Vet">Veterinary</option>
+        <option value="Bodywork">Body Work (Chiro, Massage, etc.)</option>
+        <option value="Other">Other</option>
+        </select>
+        <small *ngIf="hasError(type)" [class]="hasError(type) ? 'has-error' :''">
+        <div *ngIf="type?.errors">
+            <span *ngIf="type?.errors?.['required']">Type of service is a required field</span>
+        </div>
+        </small>
+  </div>
+  </div>
+  <!-- <div class="form-row">
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label for="image"><b>Image File</b></label>
+        <input type="file" requiredFileType="image/png" class="form-control" name="image" id="image" #image="ngModel" [(ngModel)]="listing.image" (change)="onFileSelected($event)"
+        aria-describedby="imageHelp">
+        <div class="file-upload">
+            {{fileName || "No file uploaded yet."}} -->
+            <!-- <button mat-mini-fab color="primary" class="upload-btn" (click)="image.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button> -->
+        <!-- </div>
+    </div>
+    </div>
+  </div> -->
+  <div class="form-row">
+  <div class="col-12 mt-2">
+    <label for="phone"><b>Phone Number</b></label>
+        <input type="text" class="form-control" name="phone" id="phone" #phone="ngModel" [(ngModel)]="listing.phone" required
+        aria-describedby="phoneHelp">
+        <small *ngIf="hasError(phone)" [class]="hasError(phone) ? 'has-error' :''">
+        <div *ngIf="phone?.errors">
+            <span *ngIf="phone?.errors?.['required']">Phone is a required field</span>
+        </div>
+        </small>
+  </div>
+</div>
+<div class="form-row">
+  <div class="col-12 mt-2">
+    <label for="address"><b>Address</b></label>
+    <input type="text" class="form-control" name="address" id="address" #address="ngModel" [(ngModel)]="listing.address" 
+    aria-describedby="addressHelp">
+  </div>
+  </div>
+
+  <div class="form-row-12">
+    <div class="col-sm-4 mt-2">
+      <label for="city"><b>City</b></label>
+      <input type="text" class="form-control" name="city" id="city" #city="ngModel" [(ngModel)]="listing.city" required
+      aria-describedby="cityHelp">
+      <small *ngIf="hasError(city)" [class]="hasError(city) ? 'has-error' :''">
+        <div *ngIf="city?.errors">
+          <span *ngIf="city?.errors?.['required']">City is a required field</span>
+      </div>
+      </small>
+    </div>
+    <div class="col-sm-4 mt-2">
+    <label for="state"><b>State</b></label>
+    <select class="form-select" aria-label="state" class="form-control" name="state" id="state" #state="ngModel" [(ngModel)]="listing.state" required>
+        <option selected>Select State</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizonia</option>
+        <option value="AR">Arkansas</option>
+        <option value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delware</option>
+        <option value="DC">DC</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="VI">Virgin Islands</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+        </select>
+    </div>
+    <div class="col-sm-4 mt-2">
+      <label for="zip"><b>Zip</b></label>
+      <input type="text" class="form-control" name="zip" id="zip" #zip="ngModel" [(ngModel)]="listing.zip" required
+      aria-describedby="zipHelp">
+      <small *ngIf="hasError(zip)" [class]="hasError(zip) ? 'has-error' :''">
+      <div *ngIf="zip?.errors">
+          <span *ngIf="zip?.errors?.['required']">Zip is a required field</span>
+      </div>
+      </small>
+    </div>
+  </div>
+  <div class="col-12 mt-2">
+      <label for="website"><b>Website URL</b></label>
+      <input type="text" class="form-control" name="website" id="website" #website="ngModel" [(ngModel)]="listing.website" 
+      aria-describedby="websiteHelp">
+  </div>
+  <div class="col-12"><br>
+    <button type="submit" class="btn btn-info btn-block" (click)="onSubmit(addlistForm)">Submit</button>
+  </div>
+</form>
+</div>
+
+
+<!-- <div class="container form-container mt-3">
+    <h1>Add Listing Form</h1>
+    <p>Once the form is submitted, it may take between 24 to 48 hours for the listing to be verified and published on the site.<br>
+    Thank you for your patience!</p>
+    <form  #addlistForm="ngForm" class="form-validate"  >
+<div class="form-row"> -->
+    <!-- Email -->
+    <!-- <div class="col-sm-6"> -->
+    <!-- <div class="form-group"> -->
+        <!-- <label for="email"><b>Primary Contact Email Address</b></label>
+        <input type="email" class="form-control" name="email" id="email" #email="ngModel" [(ngModel)]="listing.email" 
+        aria-describedby="emailHelp" minlength="6" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  >
+        <small *ngIf="hasError(email)" [class]="hasError(email) ? 'has-error' :''">
+        <div *ngIf="email?.errors">
+            <span *ngIf="email?.errors?.['required']">Email is a required field</span>
+            <span *ngIf="email?.errors?.['minlength']">Email is a min 6 char long field</span>
+            <span *ngIf="email?.errors?.['pattern']">Please enter a valid email address</span>
+        </div>
+        </small>
+    </div> -->
+    
+
+    <!-- <div class="form-row"> -->
+    <!-- Title -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group"> -->
+        <!-- <label for="title"><b>Title of Listing</b></label>
+        <input type="text" class="form-control" name="title" id="title" #title="ngModel" [(ngModel)]="listing.title" required
+        aria-describedby="titleHelp" minlength="5">
+        <small *ngIf="hasError(title)" [class]="hasError(title) ? 'has-error' :''">
+        <div *ngIf="title?.errors">
+            <span *ngIf="title?.errors?.['required']">Title is a required field</span>
+            <span *ngIf="title?.errors?.['minlength']">Title must be at least 5 characters</span>
+        </div>
+        </small> -->
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- <div class="form-row"> -->
+    <!-- Description -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group"> -->
+        <!-- <label for="description"><b>Detailed Description</b></label>
+        <textarea class="form-control" aria-label="With textarea" name="description" id="description" #description="ngModel" [(ngModel)]="listing.description" required></textarea>
+        <small *ngIf="hasError(description)" [class]="hasError(description) ? 'has-error' :''">
+        <div *ngIf="description?.errors">
+            <span *ngIf="description?.errors?.['required']">Description is a required field</span>
+        </div>
+        </small>
+    </div>
+    </div> -->
+
+
+    <!-- <div class="form-row"> -->
+    <!-- Primary Contact -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group"> -->
+        <!-- <label for="primcont"><b>Primary Contact Name</b></label>
+        <input type="text" class="form-control" name="primcont" id="primcont" #primcont="ngModel" [(ngModel)]="listing.primcont" required
+        aria-describedby="primcontHelp">
+        <small *ngIf="hasError(primcont)" [class]="hasError(primcont) ? 'has-error' :''">
+        <div *ngIf="primcont?.errors">
+            <span *ngIf="primcont?.errors?.['required']">Primary Contact Name is a required field</span>
+        </div>
+        </small>
+    </div>
+    </div> -->
+
+    <!-- <div class="form-row"> -->
+    <!-- Type of Service -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group"> -->
+        <!-- <label for="type"><b>Type of Service</b> <i>(select all that apply)</i></label>
+        <select class="form-select" multiple aria-label="multiple select example" class="form-control" name="type" id="type" #type="ngModel" [(ngModel)]="listing.type" required>
+        <option selected>Select Type of Service</option>
+        <option value="Boarding">Boarding</option>
+        <option value="Lessons">Lessons</option>
+        <option value="Sales">Leasing and Sales</option>
+        <option value="Breeding">Breeding</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Rehabilitation">Rehabilitation</option>
+        <option value="Farrier">Farrier</option>
+        <option value="Vet">Veterinary</option>
+        <option value="Bodywork">Body Work (Chiro, Massage, etc.)</option>
+        <option value="Other">Other</option>
+        </select>
+        <small *ngIf="hasError(type)" [class]="hasError(type) ? 'has-error' :''">
+        <div *ngIf="type?.errors">
+            <span *ngIf="type?.errors?.['required']">Type of service is a required field</span>
+        </div>
+        </small>
+    </div>
+    </div> -->
+
+    <!-- <div class="form-row"> -->
+    <!-- Image -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group">
+        <label for="image"><b>Image File</b></label>
+        <input type="file" requiredFileType="image/png" class="form-control" name="image" id="image" #image="ngModel" [(ngModel)]="listing.image" (change)="onFileSelected($event)"
+        aria-describedby="imageHelp">
+        <div class="file-upload">
+            {{fileName || "No file uploaded yet."}} -->
+            <!-- <button mat-mini-fab color="primary" class="upload-btn" (click)="image.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button> -->
+        <!-- </div> -->
+        <!-- <div class="progress">
+            <mat-progress-bar class="progress-bar" mode="determinate" [value]="uploadProgress">
+            </mat-progress-bar>
+            <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+        </div> -->
+    <!-- </div>
+    </div>
+    </div> -->
+
+    <!-- <div class="form-row"> -->
+    <!-- Phone Number -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group">
+        <label for="phone"><b>Phone Number</b></label>
+        <input type="text" class="form-control" name="phone" id="phone" #phone="ngModel" [(ngModel)]="listing.phone" required
+        aria-describedby="phoneHelp">
+        <small *ngIf="hasError(phone)" [class]="hasError(phone) ? 'has-error' :''">
+        <div *ngIf="phone?.errors">
+            <span *ngIf="phone?.errors?.['required']">Phone is a required field</span>
+        </div>
+        </small>
+    </div>
+    </div>
+    </div> -->
+
+    <!-- <div class="form-row"> -->
+    <!-- Address -->
+    <!-- <div class="col-sm-6 mt-2"> -->
+    <!-- <div class="form-group">
+        <label for="address"><b>Address</b></label>
+        <input type="text" class="form-control" name="address" id="address" #address="ngModel" [(ngModel)]="listing.address" 
+        aria-describedby="addressHelp">
+    </div>
+    </div>
+    </div> -->
+
+<!-- <div class="form-row">
+    <div class="col-md-6">
+    <label for="city"><b>City</b></label>
+    <input type="text" class="form-control" name="city" id="city" #city="ngModel" [(ngModel)]="listing.city" required
+    aria-describedby="cityHelp">
+    <small *ngIf="hasError(city)" [class]="hasError(city) ? 'has-error' :''">
+    <div *ngIf="city?.errors">
+        <span *ngIf="city?.errors?.['required']">City is a required field</span>
+    </div>
+    </small>
+    </div>
+    <div class="col-md-4">
+    <label for="state"><b>State</b></label>
+    <select class="form-select" aria-label="state" class="form-control" name="state" id="state" #state="ngModel" [(ngModel)]="listing.state" required>
+        <option selected>Select State</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizonia</option>
+        <option value="AR">Arkansas</option>
+        <option value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delware</option>
+        <option value="DC">DC</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="VI">Virgin Islands</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+        </select>
+    </div>
+    <div class="col-md-2 mt-2"> -->
+    <!-- <div class="col-sm-3 mt-2"> -->
+        <!-- <div class="form-group"> -->
+            <!-- <label for="zip"><b>Zip</b></label>
+            <input type="text" class="form-control" name="zip" id="zip" #zip="ngModel" [(ngModel)]="listing.zip" required
+            aria-describedby="zipHelp">
+            <small *ngIf="hasError(zip)" [class]="hasError(zip) ? 'has-error' :''">
+            <div *ngIf="zip?.errors">
+                <span *ngIf="zip?.errors?.['required']">Zip is a required field</span>
+            </div>
+            </small>
+        </div>
+    </div> -->
+
+    <!-- <div class="form-row"> -->
+        <!-- Website -->
+       <!-- <div class="col-sm-6 mt-2">
+        <div class="form-group">
+          <label for="website"><b>Website URL</b></label>
+          <input type="text" class="form-control" name="website" id="website" #website="ngModel" [(ngModel)]="listing.website" 
+          aria-describedby="websiteHelp">
+        </div>
+       </div>
+    </div> -->
+
+    <!-- <div class="col-sm-6 mt-2">
+        <div class="form-group">
+        <input type="hidden" class="form-control" name="verified" id="verified" #verified="ngModel" [(ngModel)]="listing.verified" value=false>
+        </div>
+    </div>
+    <div class="col-sm-3"></div> -->
+
+
+    <!-- <div class="row mt-3">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-info btn-block" (click)="onSubmit(addlistForm)">Submit</button>
+        </div>
+        <div class="col-3"></div>
+    </div> -->
+
+
+
+    
+<!-- </div> -->

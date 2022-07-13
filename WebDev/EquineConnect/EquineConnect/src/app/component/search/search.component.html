@@ -1,0 +1,104 @@
+<form>
+  <div class="form-group form-inline mt-4">
+    <h5>Search listings by Name or Type of service: </h5>
+    <p><b>The Types of service are:</b> Boarding, Training, Lessons, Sales & Leases, Rehabilitation, Equine Bodywork, Transportation, Breeding, Farrier, Vet, and Other</p>
+  <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="searchTerm"><br>
+  </div>
+  <button class="btn btn-outline-success my-2 my-sm-0 mt-3" type="submit" (click)="onSearch(searchTerm)">Search</button>
+  </form>
+
+  <div class="row" *ngIf="searchComplete=='true'">
+  <div class="row card-group">
+    <!-- <div class="col mb-4"*ngIf="products.length>0 else noProduct"> -->
+      <div class="row-col-1">
+      <div class="card mt-2" *ngFor="let l of searchReturn">
+        <!-- <img src={{l.image}} class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <p class="card-text"><b>{{l.title | uppercase}}</b></p>
+          <p class="card-text"><b>Type:</b> {{l.type}}</p>
+          <p class="card-text"><b>Summary:</b> {{l.description}}</p>
+          <p class="card-text"><b>Website:</b> {{l.website}}</p>
+        </div>
+        <div class="card-footer">
+          <p class="card-text">
+            <small class="text-muted"><b>Primary Contact: </b>{{l.primcont}}</small><br>
+            <small class="text-muted"><b>Primary Phone: </b>{{l.phone}}</small><br>
+            <small class="text-muted"><b>Primary Email: </b>{{l.email}}</small><br>
+            <small class="text-muted"><b>Location: </b>{{l.city}}, {{l.state}}</small><br>
+            <!-- <a (click)="onViewDetails(l.id)" class="badge badge-danger">View More...</a><br> -->
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row mt-4" *ngIf="searchComplete=='empty'">
+    <p>Sorry! There were no matches to your search!</p>
+  </div>
+  <router-outlet></router-outlet>
+
+
+
+  <!-- <form class="form-inline my-2 my-lg-0">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="boarding" id="type1">
+        <label class="form-check-label" for="type1">
+          Boarding
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="lessons" id="type2">
+        <label class="form-check-label" for="type2">
+          Lessons
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="sales" id="type3">
+        <label class="form-check-label" for="type3">
+          Leasing and Sales
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="breeding" id="type4">
+        <label class="form-check-label" for="type4">
+          Breeding
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="transportation" id="type5">
+        <label class="form-check-label" for="type5">
+          Transportation
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="rehab" id="type6">
+        <label class="form-check-label" for="type6">
+          Rehab
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="farrier" id="type7">
+        <label class="form-check-label" for="type7">
+            Farrier
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="vet" id="type8">
+        <label class="form-check-label" for="type8">
+          Veterinary
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="bodywork" id="type9">
+        <label class="form-check-label" for="type9">
+            Body Work (Chiro, Massage, etc.)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="other" id="type10">
+        <label class="form-check-label" for="type10">
+          Other
+        </label>
+      </div> -->
+

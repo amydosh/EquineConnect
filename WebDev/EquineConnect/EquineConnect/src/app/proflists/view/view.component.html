@@ -1,0 +1,35 @@
+<!-- <div class="container mt-4">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="text" aria-label="Search" name="searchTerm" id="searchTerm">
+    <button class="btn btn-outline-success" type="submit" (click)="onSearch(searchTerm)">Search</button>
+  </form>
+</div> -->
+<div class="container mt-4">
+  <h3>All available listings</h3>
+</div>
+
+<div class="row mt-4" *ngIf="message!=''">{{this.message}}</div>
+  <div class="row card-group">
+    <!-- <div class="col mb-4"*ngIf="products.length>0 else noProduct"> -->
+      <div class="row-col-1">
+      <div class="card mt-2" *ngFor="let l of listings">
+        <!-- <img src={{l.image}} class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <p class="card-text"><b>{{l.title | uppercase}}</b></p>
+          <p class="card-text"><b>Type:</b> {{l.type}}</p>
+          <p class="card-text"><b>Summary:</b> {{l.description}}</p>
+          <p class="card-text"><b>Website:</b> {{l.website}}</p>
+        </div>
+        <div class="card-footer">
+          <p class="card-text">
+            <small class="text-muted"><b>Primary Contact: </b>{{l.primcont}}</small><br>
+            <small class="text-muted"><b>Primary Phone: </b>{{l.phone}}</small><br>
+            <small class="text-muted"><b>Primary Email: </b>{{l.email}}</small><br>
+            <small class="text-muted"><b>Location: </b>{{l.city}}, {{l.state}}</small><br>
+            <!-- <a (click)="onViewDetails(l.id)" class="badge badge-danger">View More...</a><br> -->
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+   

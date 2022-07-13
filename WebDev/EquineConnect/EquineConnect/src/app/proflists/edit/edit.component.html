@@ -1,0 +1,161 @@
+<!-- Bootstrap Form with validation -->
+<div class="container form-container">
+    <h1 style="text-align: center;">Update Listing Form</h1>
+    <form class="form-validate" novalidate [formGroup]="listingForm" (ngSubmit)="onSubmit(listingForm)">
+    
+     <div class="form-row">
+     <div class="col-sm-3"></div>
+       <div class="col-sm-6">
+        <div class="form-group">
+          <label for="id"><b>ID:</b></label>
+          <input type="number" class="form-control" name="id" id="id" formControlName="id"
+          aria-describedby="idHelp">
+        </div>
+       </div>
+       <div class="col-sm-3"></div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+           <div class="form-group">
+            <label for="type"><br><b>Type of Service</b> <i>(select all that apply)</i><br>
+            (Examples include: Boarding, Lessons, Leasing and Sales, Breeding, Transportation, Rehabilitation, Farrier,
+           Veterinary, Bodywork (Chiro, Massage, etc.), Other)</label>
+            <!-- <select class="form-select" multiple aria-label="multiple select example" class="form-control" name="type" id="type" formControlName="type">
+            <option selected>Select Type of Service</option>
+            <option value=" Boarding">Boarding</option>
+            <option value=" Lessons">Lessons</option>
+            <option value=" Sales">Leasing and Sales</option>
+            <option value=" Breeding">Breeding</option>
+            <option value=" Transportation">Transportation</option>
+            <option value=" Rehabilitation">Rehabilitation</option>
+            <option value=" Farrier">Farrier</option>
+            <option value=" Vet">Veterinary</option>
+            <option value=" Bodywork">Body Work (Chiro, Massage, etc.)</option>
+            <option value=" Other">Other</option>
+            </select> -->
+             <!-- <label for="type">Type:</label> -->
+             <input type="text" class="form-control" name="type" id="type" formControlName="type"
+             aria-describedby="typeHelp">
+           </div>
+          </div>
+          <div class="col-sm-3"></div>
+       </div>
+
+
+    <div class="form-row">
+        <div class="col-sm-3"></div>
+       <div class="col-sm-6">
+        <div class="form-group">
+          <label for="title"><br><b>Title</b></label>
+          <input type="text" class="form-control" name="title" id="title" formControlName="title"  aria-describedby="titleHelp" >
+        </div>
+       </div>
+       <div class="col-sm-3"></div>
+     </div>
+
+     <div class="form-row">
+        <div class="col-sm-3"></div>
+       <div class="col-sm-6">
+        <div class="form-group">
+          <label for="description"><br><b>Description</b></label>
+          <input type="text" class="form-control" name="description" id="description" formControlName="description"  aria-describedby="descriptionHelp" >
+        </div>
+       </div>
+       <div class="col-sm-3"></div>
+     </div>
+  
+     <div class="form-row">
+      <div class="col-sm-3"></div>
+     <div class="col-sm-6">
+      <div class="form-group">
+        <label for="image"><br><b>Image URL</b></label>
+        <input type="file" class="form-control" name="image" id="image" formControlName="image"  aria-describedby="imageHelp" >
+      </div>
+     </div>
+     <div class="col-sm-3"></div>
+   </div>
+
+     <div class="form-row">
+        <div class="col-sm-3"></div>
+       <div class="col-sm-6">
+        <div class="form-group">
+          <label for="primcont"><br><b>Primary Contact</b></label>
+          <input type="text" class="form-control" name="primcont" id="primcont" formControlName="primcont"  aria-describedby="primcontHelp" >
+        </div>
+       </div>
+       <div class="col-sm-3"></div>
+     </div>
+
+   <div class="form-row">
+    <div class="col-sm-3"></div>
+   <div class="col-sm-6">
+    <div class="form-group">
+      <label for="city"><br><b>City</b></label>
+      <input type="text" class="form-control" name="city" id="city" formControlName="city"  aria-describedby="cityHelp" >
+    </div>
+   </div>
+   <div class="col-sm-3"></div>
+ </div>
+
+ <!-- <div class="form-row">
+     <div class="col-sm-3">
+         <div class="col-sm-6">
+             <div class="form-group">
+                 <label for="state">State</label>
+                 <input type="text" class="form-control" name="state" id="state" formControlName="state">
+             </div>
+         </div>
+         <div class="col-sm-3"></div>
+     </div>
+ </div> -->
+
+
+ <div class="form-row">
+    <div class="col-sm-3">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="zip"><br><b>Zip</b></label>
+                <input type="text" class="form-control" name="zip" id="zip" formControlName="zip">
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="col-sm-3">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="website"><br><b>Website URL</b></label>
+                <input type="text" class="form-control" name="website" id="website" formControlName="website">
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="col-sm-3">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="verified"><br><b>Verified</b></label>
+                <input type="boolean" class="form-control" name="verified" id="verified" formControlName="verified">
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+
+  
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <button type="submit" class="btn btn-info btn-block" >Submit</button>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    </form>
+  </div>

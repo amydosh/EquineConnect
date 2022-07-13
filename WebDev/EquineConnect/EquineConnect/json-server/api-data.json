@@ -1,0 +1,63 @@
+{
+  "listings": [
+    {
+      "id": 1,
+      "title": "Northwoods Stable",
+      "description": "A full service rehabiliation facility",
+      "type": "Boarding, Rehabilitation",
+      "primcont": "Kelly Emerson",
+      "image": "/Users/andrealawrence/Desktop/WebDev/EquineConnect/EquineConnect/api/thumbnail-upload/NWS.png",
+      "website": "https://www.facebook.com/groups/58363598109",
+      "phone": "555-555-5555",
+      "email": "rescuedivaXX@gmail.com",
+      "state": "NC",
+      "verified": "true",
+      "city": "Winston Salem",
+      "zip": "27106"
+    },
+    {
+      "id": 2,
+      "title": "Lake Norman Dressage Center",
+      "description": "A full service boarding and training facility",
+      "type": "Boarding, Lessons",
+      "primcont": "Elaine Hayes",
+      "image": "",
+      "website": "",
+      "phone": "555-555-5555",
+      "email": "rescuedivaXX@gmail.com",
+      "state": "NC",
+      "verified": "true",
+      "city": "Mooresville",
+      "zip": "12345"
+    },
+    {
+      "id": 3,
+      "title": "Eliquine",
+      "description": "Certified Equine Sports Massage Therapist, Andie Mydosh, provides specialized services to keep competitive horses at maximum performance",
+      "type": "Bodywork",
+      "primcont": "Andie Mydosh",
+      "image": "/Users/andrealawrence/Desktop/WebDev/EquineConnect/EquineConnect/api/thumbnail-upload/eliquine.png",
+      "website": "www.eliquine.com",
+      "phone": "248-464-4155",
+      "email": "eliquineNC@gmail.com",
+      "state": "NC",
+      "verified": "true",
+      "city": "Advance",
+      "zip": "27006"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "type": "admin",
+      "email": "andie.mydosh@gmail.com",
+      "password": "password1"
+    },
+    {
+      "id": 2,
+      "type": "general",
+      "email": "jmydosh@gmail.com",
+      "password": "password1"
+    }
+  ]
+}
