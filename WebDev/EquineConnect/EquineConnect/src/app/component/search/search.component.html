@@ -14,7 +14,7 @@
       <div class="card mt-2" *ngFor="let l of searchReturn">
         <!-- <img src={{l.image}} class="card-img-top" alt="..."> -->
         <div class="card-body">
-          <p class="card-text"><b>{{l.title | uppercase}}</b></p>
+          <p class="card-text"><b>{{l.title}}</b></p>
           <p class="card-text"><b>Type:</b> {{l.type}}</p>
           <p class="card-text"><b>Summary:</b> {{l.description}}</p>
           <p class="card-text"><b>Website:</b> {{l.website}}</p>
@@ -36,7 +36,7 @@
   <div class="row mt-4" *ngIf="searchComplete=='empty'">
     <p>Sorry! There were no matches to your search!</p>
   </div>
-  <router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->
 
 
 

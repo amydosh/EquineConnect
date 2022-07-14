@@ -6,6 +6,7 @@ import { ListingService } from './service/listing.service';
 import { AdminService } from './service/admin.service';
 import { NgModule, Pipe } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// import { NgbModule }from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,11 +25,12 @@ import { ProflistsComponent } from './proflists/proflists.component';
 import { ViewComponent } from './proflists/view/view.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { SuccessComponent } from './component/success/success.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { SearchComponent } from './component/search/search.component';
 import { FooterComponent } from './component/footer/footer.component';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -60,9 +62,11 @@ import { FooterComponent } from './component/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    // Pipe,
+    // NgbModule.forRoot()
   ],
-  providers: [AdminService, ListingService, UserService],
+  providers: [AdminService, ListingService, UserService, {provide: LocationStrategy, useClass:PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
