@@ -44,6 +44,22 @@
       "verified": "true",
       "city": "Advance",
       "zip": "27006"
+    },
+    {
+      "id": 4,
+      "type": "Boarding, Sales",
+      "title": "asdfasdfasdf",
+      "image": "",
+      "description": "asdfasdfasdf",
+      "primcont": "Andrea C Mydosh",
+      "phone": "2484644155",
+      "email": "andie.mydosh@gmail.com",
+      "address": "170 BALTIMORE DOWNS RD",
+      "city": "ADVANCE",
+      "state": "NC",
+      "zip": "27006",
+      "website": "",
+      "verified": "false"
     }
   ],
   "users": [
