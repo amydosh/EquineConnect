@@ -30,6 +30,7 @@ import { SuccessComponent } from './component/success/success.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { SearchComponent } from './component/search/search.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { TestDBComponent } from './component/test-db/test-db.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -54,7 +55,8 @@ import { FooterComponent } from './component/footer/footer.component';
     SuccessComponent,
     ContactComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+    TestDBComponent
   ],
   imports: [
     BrowserModule,
