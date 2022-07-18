@@ -10,7 +10,8 @@ export class ListingService {
   constructor(private httpClient: HttpClient) { }
 
   // 2. Define webservice URI
-  private url:string = "http://localhost:3000/listings";
+  private url:string = "http://localhost:3306/listings";
+  // private url:string = 
 
   // Get all products
   public getListings(){
