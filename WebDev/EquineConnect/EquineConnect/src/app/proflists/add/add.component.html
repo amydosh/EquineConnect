@@ -6,6 +6,8 @@
   <p>Once the form is submitted, it may take between 24 to 48 hours for the listing to be verified and published on the site.<br>
   Thank you for your patience!</p>
   <form  #addlistForm="ngForm" class="form-validate"  >
+    <!-- <form action="https://mailthis.to/andie.mydosh@gmail.com"
+    method="POST" encType="multipart/form-data"> -->
 <div class="form-row">
   <div class="col-md-6 mt-2">
     <label for="email"><b>Primary Contact Email Address</b></label>
@@ -199,6 +201,7 @@
   </div>
   <div class="col-12"><br>
     <button type="submit" class="btn btn-info btn-block" (click)="onSubmit(addlistForm)">Submit</button>
+    <!-- <button class="btn btn-primary" type="submit"><a href = "mailto: andie.mydosh@gmail.com">Submit</a></button> -->
   </div>
 </form>
 </div>

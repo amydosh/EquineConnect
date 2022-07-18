@@ -1,3 +1,4 @@
+import { ContactService } from './service/contact.service';
 import { EditComponent } from './proflists/edit/edit.component';
 import { AdmindashComponent } from './admin/admindash/admindash.component';
 import { AddComponent } from './proflists/add/add.component';
@@ -30,7 +31,7 @@ import { SuccessComponent } from './component/success/success.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { SearchComponent } from './component/search/search.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { TestDBComponent } from './component/test-db/test-db.component';
+// import { TestDBComponent } from './component/test-db/test-db.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -56,7 +57,7 @@ import { TestDBComponent } from './component/test-db/test-db.component';
     ContactComponent,
     SearchComponent,
     FooterComponent,
-    TestDBComponent
+    // TestDBComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,7 @@ import { TestDBComponent } from './component/test-db/test-db.component';
     // Pipe,
     // NgbModule.forRoot()
   ],
-  providers: [AdminService, ListingService, UserService, {provide: LocationStrategy, useClass:PathLocationStrategy}],
+  providers: [AdminService, ListingService, UserService, ContactService ,{provide: LocationStrategy, useClass:PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

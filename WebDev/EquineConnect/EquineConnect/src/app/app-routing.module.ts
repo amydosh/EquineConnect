@@ -1,3 +1,4 @@
+// import { TestDBComponent } from './component/test-db/test-db.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { SearchComponent } from './component/search/search.component';
 import { SuccessComponent } from './component/success/success.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path:'success', component:SuccessComponent},
   { path:'search', component:SearchComponent},
   { path:'contact', component:ContactComponent},
+  // { path:'test', component:TestDBComponent},
   // { path:'api/thumbnail-upload'},
   // { path:'admindash', component:AdmindashComponent},
   { path:'admin', loadChildren: ()=> import('./admin/admin-routing.module').then(m=> m.AdminRoutingModule)},

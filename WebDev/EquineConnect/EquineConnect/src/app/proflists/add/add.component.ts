@@ -1,3 +1,4 @@
+import { ContactService } from './../../service/contact.service';
 import { ListingService } from './../../service/listing.service';
 import { UserService } from './../../service/user.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -45,7 +46,8 @@ export class AddComponent implements OnInit {
    constructor(
     private listSrv:ListingService, 
     private router:Router,
-    private httpClient:HttpClient
+    private httpClient:HttpClient, 
+    private contact:ContactService
     ) {
    }
  
@@ -55,10 +57,23 @@ export class AddComponent implements OnInit {
    public onSubmit(form:any) {
     if(form.valid){
       console.log(this.listing);
+      // this.contact.PostMessage(FormData)
+      // .subscribe(response => {
+      //   location.href='https://mailthis.to/confirm';
+      //   console.log(response);
+      //   console.log("Listing has been successfully added");
+      //   this.router.navigateByUrl("/success"); 
+      // }, error=> {
+      //   console.warn(error.responseText);
+      //   console.log({error});
+      // })
+
+
+
+      // --> Update later
       for(let i=0; i<this.listing.type.length-1; i++){
         console.log(this.listing.type[i]);
         this.types = this.listing.type[i].toString;
-        // console.log(this.types);
         this.temp = this.temp.concat(this.listing.type[i]+", ");
         console.log(this.temp);
       }
@@ -77,6 +92,7 @@ export class AddComponent implements OnInit {
       this.validate(form);
       console.log("The form cannot be submited");
     }    
+    
   }
 
 
